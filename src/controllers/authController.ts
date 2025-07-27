@@ -45,6 +45,7 @@ export const signup = async (req: Request, res: Response, next: NextFunction) =>
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, password } = req.body
+    console.log("Login attempt with email:", email)
 
     const user = await UserModel.findOne({ email })
     if (!user) {
