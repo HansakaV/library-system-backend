@@ -9,19 +9,21 @@ import cookieParser from "cookie-parser"
 dotenv.config()
 const app = express()
 
-// handle cors
+// Handle CORS - Fixed version
 const corsOptions = {
-  origin: process.env.CLIENT_ORIGIN,
+  origin: [
+    'http://localhost:5173',
+    'https://library-management-neon-chi.vercel.app'
+  ],
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeader: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization"], // Fixed: was "allowedHeader"
 }
 
 app.use(cors(corsOptions))
 
 app.use(express.json())
 app.use(cookieParser())
-
 
 const PORT = process.env.PORT
 

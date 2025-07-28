@@ -76,6 +76,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     // Send access token in response
     res.status(200).json({
       accessToken,
+      status: 200,
       user: {
         _id: user._id,
         name: user.name,
