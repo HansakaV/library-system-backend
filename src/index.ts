@@ -13,7 +13,9 @@ const app = express()
 const corsOptions = {
   origin: [
     'http://localhost:5173',
-    'https://library-management-neon-chi.vercel.app'
+    'https://library-management-neon-chi.vercel.app',
+    'https://library-system-backend-production-a194.up.railway.app',
+    
   ],
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
