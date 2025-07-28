@@ -3,10 +3,16 @@ import { APIError } from "../errors/ApiError";
 import { BookModel } from "../models/book";
 
 export const createBook = async (req: Request, res: Response, next: NextFunction) => {
+    console.log("Creating book with data:", req.body);
     try {
-        const book = new BookModel(req.body);
-        await book.save();
-        res.status(201).json(book);
+         const bookData = {
+            ...req.body,
+            status: req.body.status ? 'available' : 'unavailable'
+        };
+        const book = new BookModel(bookData);
+        const result = await book.save();
+        console.log("Book created successfully:", result);
+        res.status(201).json(result);
     } catch (error: any) {
         next(error);
     }
